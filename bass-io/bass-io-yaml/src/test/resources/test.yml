@@ -1,0 +1,11 @@
+key1: val1
+key2:
+  key21: val21
+  key22: val22
+key3:
+  - id: 1
+    name: A
+  - id: 2
+    name: B
+  - id: 3
+    name: C
