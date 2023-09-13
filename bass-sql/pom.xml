@@ -16,5 +16,12 @@
             <groupId>com.starxmind</groupId>
             <artifactId>bass-sugar</artifactId>
         </dependency>
+        <!-- mysql -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.30</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 </project>

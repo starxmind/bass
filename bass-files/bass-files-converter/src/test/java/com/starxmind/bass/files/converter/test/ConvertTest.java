@@ -1,5 +1,6 @@
 package com.starxmind.bass.files.converter.test;
 
+import com.starxmind.bass.files.converter.Pdf2PngConverter;
 import com.starxmind.bass.files.converter.Png2JpgConverter;
 import org.junit.Test;
 
@@ -28,5 +29,11 @@ public class ConvertTest {
     @Test
     public void printDefaultPath() {
         System.out.println(new File("").getAbsolutePath());
+    }
+
+    //    @Test
+    public void pdf2PngTest() throws IOException {
+        Pdf2PngConverter pdf2PngConverter = new Pdf2PngConverter();
+        pdf2PngConverter.convert("xxx.pdf", "");
     }
 }
