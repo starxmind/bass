@@ -3,10 +3,7 @@ package com.starxmind.bass.sugar;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 
-import java.lang.reflect.Field;
-import java.lang.reflect.Modifier;
-import java.lang.reflect.ParameterizedType;
-import java.lang.reflect.Type;
+import java.lang.reflect.*;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -164,5 +161,15 @@ public abstract class ReflectionUtils {
             return Object.class;
         }
         return (Class) params[index];
+    }
+
+    public static <T> T newInstance(String classname,
+                                    Class<T> instanceClass,
+                                    Class[] constructorParameterTypes,
+                                    Object[] constructorParameterValues) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
+        Class<?> clazz = Class.forName(classname);
+        Constructor<?> constructor = clazz.getConstructor(constructorParameterTypes);
+        Asserts.notNull(constructor, "No suitable constructor found for " + instanceClass.getName());
+        return (T) constructor.newInstance(constructorParameterValues);
     }
 }
