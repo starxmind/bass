@@ -163,13 +163,24 @@ public abstract class ReflectionUtils {
         return (Class) params[index];
     }
 
-    public static <T> T newInstance(String classname,
-                                    Class<T> instanceClass,
-                                    Class[] constructorParameterTypes,
-                                    Object[] constructorParameterValues) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
-        Class<?> clazz = Class.forName(classname);
-        Constructor<?> constructor = clazz.getConstructor(constructorParameterTypes);
-        Asserts.notNull(constructor, "No suitable constructor found for " + instanceClass.getName());
-        return (T) constructor.newInstance(constructorParameterValues);
+    /**
+     * Get the super or itself suitable constructor by parameter types
+     *
+     * @param clazz class
+     * @param superOrSelfConstructorParameterTypes constructor parameter types
+     * @return The suitable constructor
+     */
+    public static Constructor<?> getSuitableConstructor(Class clazz, List<Class<?>> superOrSelfConstructorParameterTypes) {
+        for (Constructor<?> constructor : clazz.getConstructors()) {
+            Class<?>[] parameterTypes = constructor.getParameterTypes();
+            for (int i = 0; i < superOrSelfConstructorParameterTypes.size(); i++) {
+                if (!parameterTypes[i].equals(superOrSelfConstructorParameterTypes.get(i))) {
+                    break; // 构造器不匹配，继续匹配下一个
+                }
+                // 匹配，则返回
+                return constructor;
+            }
+        }
+        throw new IllegalArgumentException("No suitable constructor found for " + clazz.getName());
     }
 }
