@@ -4,8 +4,9 @@ import javax.crypto.*;
 import javax.crypto.spec.DESKeySpec;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
-import java.security.SecureRandom;
 import java.security.spec.InvalidKeySpecException;
+
+import static com.starxmind.bass.security.SecurityConstants.SECURE_RANDOM;
 
 /**
  * 标准数据加密
@@ -30,9 +31,6 @@ public abstract class DESUtils {
             e.printStackTrace();
         }
     }
-
-    // 生成一个可信任的随机数源
-    private static final SecureRandom SECURE_RANDOM = new SecureRandom();
 
     /**
      * 使用key加密
