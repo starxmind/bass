@@ -41,12 +41,12 @@ public abstract class Asserts {
     /**
      * Assert the expression is true
      *
-     * @param expression expression
-     * @param ex         Customized exception
+     * @param expression       expression
+     * @param runtimeException Runtime exception
      */
-    public static void isTrue(boolean expression, RuntimeException ex) {
+    public static void isTrue(boolean expression, RuntimeException runtimeException) {
         if (!expression) {
-            throw ex;
+            throw runtimeException;
         }
     }
 
@@ -70,6 +70,16 @@ public abstract class Asserts {
     }
 
     /**
+     * Determine an object is null
+     *
+     * @param object           Input object
+     * @param runtimeException Runtime exception
+     */
+    public static void isNull(Object object, RuntimeException runtimeException) {
+        isTrue(object == null, runtimeException);
+    }
+
+    /**
      * Determine an object is not null
      *
      * @param object Input object
@@ -86,6 +96,16 @@ public abstract class Asserts {
      */
     public static void notNull(Object object, String error) {
         isTrue(object != null, error);
+    }
+
+    /**
+     * Determine an object is not null
+     *
+     * @param object           Input object
+     * @param runtimeException Runtime exception
+     */
+    public static void notNull(Object object, RuntimeException runtimeException) {
+        isTrue(object != null, runtimeException);
     }
 
     /**
@@ -111,7 +131,7 @@ public abstract class Asserts {
      * Assert a string is not empty
      *
      * @param string           Input string
-     * @param RuntimeException Customized exception
+     * @param RuntimeException Runtime exception
      */
     public static void notEmpty(String string, RuntimeException RuntimeException) {
         isTrue(StringUtils.isNotEmpty(string), RuntimeException);
@@ -143,10 +163,10 @@ public abstract class Asserts {
      *
      * @param string           Origin string
      * @param containedString  Contained string
-     * @param RuntimeException Customized exception
+     * @param runtimeException Runtime exception
      */
-    public static void contains(String string, String containedString, RuntimeException RuntimeException) {
-        isTrue(StringUtils.contains(string, containedString), RuntimeException);
+    public static void contains(String string, String containedString, RuntimeException runtimeException) {
+        isTrue(StringUtils.contains(string, containedString), runtimeException);
     }
 
     /**
@@ -175,10 +195,10 @@ public abstract class Asserts {
      *
      * @param string           Origin string
      * @param containedString  Contained string
-     * @param RuntimeException Customized exception
+     * @param runtimeException RuntimeException exception
      */
-    public static void notContains(String string, String containedString, RuntimeException RuntimeException) {
-        isTrue(!StringUtils.contains(string, containedString), RuntimeException);
+    public static void notContains(String string, String containedString, RuntimeException runtimeException) {
+        isTrue(!StringUtils.contains(string, containedString), runtimeException);
     }
 
     /**
@@ -204,10 +224,10 @@ public abstract class Asserts {
      * Assert a collection is not empty
      *
      * @param collection       Input collection
-     * @param RuntimeException Customized exception
+     * @param runtimeException Runtime exception
      */
-    public static void notEmpty(Collection collection, RuntimeException RuntimeException) {
-        isTrue(CollectionUtils.isNotEmpty(collection), RuntimeException);
+    public static void notEmpty(Collection collection, RuntimeException runtimeException) {
+        isTrue(CollectionUtils.isNotEmpty(collection), runtimeException);
     }
 
     /**
@@ -233,10 +253,10 @@ public abstract class Asserts {
      * Assert a map is not empty
      *
      * @param map              Input map
-     * @param RuntimeException Customized exception
+     * @param runtimeException Runtime exception
      */
-    public static void notEmpty(Map map, RuntimeException RuntimeException) {
-        isTrue(MapUtils.isNotEmpty(map), RuntimeException);
+    public static void notEmpty(Map map, RuntimeException runtimeException) {
+        isTrue(MapUtils.isNotEmpty(map), runtimeException);
     }
 
     /**
@@ -263,11 +283,11 @@ public abstract class Asserts {
     /**
      * Assert two objects are equal
      *
-     * @param o1 Object one
-     * @param o2 Object two
-     * @param ex Customized exception
+     * @param o1               Object one
+     * @param o2               Object two
+     * @param runtimeException Runtime exception
      */
-    public static void equals(Object o1, Object o2, RuntimeException ex) {
-        isTrue(Objects.equals(o1, o2), ex);
+    public static void equals(Object o1, Object o2, RuntimeException runtimeException) {
+        isTrue(Objects.equals(o1, o2), runtimeException);
     }
 }
