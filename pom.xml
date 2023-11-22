@@ -44,10 +44,10 @@
 
     <groupId>com.starxmind</groupId>
     <artifactId>bass</artifactId>
-    <version>0.0.4</version>
+    <version>0.0.6</version>
 
     <properties>
-        <bass.version>0.0.4</bass.version>
+        <bass.version>0.0.6</bass.version>
         <java.version>1.8</java.version>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
