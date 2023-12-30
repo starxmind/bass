@@ -16,23 +16,35 @@ import java.util.Map;
  * @author pizzalord
  * @since 1.0
  */
-public abstract class AbstractHttpCaller implements HttpCaller {
+public abstract class AbstractHttpCaller {
     private OkHttpClient okHttpClient;
 
     public AbstractHttpCaller(OkHttpClient okHttpClient) {
         this.okHttpClient = okHttpClient;
     }
 
-    protected String call(Request request) {
+    public String call(StarxRequest starxRequest) {
+        byte[] bytes = callForBytes(starxRequest);
+        return new String(bytes);
+    }
+
+    public byte[] callForBytes(StarxRequest starxRequest) {
+        Request request = buildRequest(starxRequest);
+        return callOkHttp(request);
+    }
+
+    protected byte[] callOkHttp(Request request) {
         try {
             Response response = okHttpClient.newCall(request).execute();
             Asserts.isTrue(response.isSuccessful(),
                     String.format("Unexpected http code: %d, error message: %s", response.code(), response.message()));
-            return new String(response.body().bytes());
+            return response.body().bytes();
         } catch (Exception e) {
             throw new StarxHttpException(e);
         }
     }
+
+    protected abstract Request buildRequest(StarxRequest starxRequest);
 
     /**
      * Append headers

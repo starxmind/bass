@@ -17,11 +17,10 @@ public class DeleteHttpCaller extends AbstractHttpCaller {
     }
 
     @Override
-    public String call(StarxRequest starxRequest) {
+    public Request buildRequest(StarxRequest starxRequest) {
         RequestBody requestBody = super.getRequestBody(starxRequest);
         Request.Builder builder = new Request.Builder().url(starxRequest.getUrl());
         appendHeaders(builder, starxRequest.getHeaders());
-        Request request = builder.delete(requestBody).build();
-        return call(request);
+        return builder.delete(requestBody).build();
     }
 }

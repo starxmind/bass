@@ -17,11 +17,10 @@ public class PostHttpCaller extends AbstractHttpCaller {
     }
 
     @Override
-    public String call(StarxRequest starxRequest) {
+    public Request buildRequest(StarxRequest starxRequest) {
         RequestBody requestBody = super.getRequestBody(starxRequest);
         Request.Builder builder = new Request.Builder().url(starxRequest.getUrl());
         appendHeaders(builder, starxRequest.getHeaders());
-        Request request = builder.post(requestBody).build();
-        return call(request);
+        return builder.post(requestBody).build();
     }
 }

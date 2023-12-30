@@ -161,6 +161,27 @@ public class StarxHttp {
         String response = get(url, headers, queryParams);
         return json2Object(response, clazz);
     }
+
+    public byte[] getForBytes(String url) {
+        return getForBytes(url, null, null);
+    }
+
+    public byte[] getForBytes(String url,
+                              Map<String, String> headers) {
+        return getForBytes(url, headers, null);
+    }
+
+    public byte[] getForBytes(String url,
+                              Map<String, String> headers,
+                              Map<String, String> queryParams) {
+        return getHttpCaller.callForBytes(
+                StarxRequest.builder()
+                        .url(url)
+                        .headers(headers)
+                        .queryParams(queryParams)
+                        .build()
+        );
+    }
     // GET END --------------------------------------------------------------------------------------------------------
 
     // POST START -----------------------------------------------------------------------------------------------------
@@ -204,6 +225,32 @@ public class StarxHttp {
                                Class<T> clazz) {
         String response = post(url, headers, formBody);
         return json2Object(response, clazz);
+    }
+
+    public byte[] postForBytes(String url,
+                               Map<String, String> headers,
+                               String jsonBody) {
+        return postHttpCaller.callForBytes(
+                StarxRequest.builder()
+                        .url(url)
+                        .headers(headers)
+                        .jsonBody(jsonBody)
+                        .contentType(ContentType.JSON)
+                        .build()
+        );
+    }
+
+    public byte[] postForBytes(String url,
+                               Map<String, String> headers,
+                               Map<String, String> formBody) {
+        return postHttpCaller.callForBytes(
+                StarxRequest.builder()
+                        .url(url)
+                        .headers(headers)
+                        .formBody(formBody)
+                        .contentType(ContentType.FORM)
+                        .build()
+        );
     }
     // POST END -------------------------------------------------------------------------------------------------------
 

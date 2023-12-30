@@ -20,7 +20,7 @@ public class GetHttpCaller extends AbstractHttpCaller {
     }
 
     @Override
-    public String call(StarxRequest starxRequest) {
+    protected Request buildRequest(StarxRequest starxRequest) {
         String url = starxRequest.getUrl();
         if (MapUtils.isNotEmpty(starxRequest.getQueryParams())) {
             Map<String, String> params = starxRequest.getQueryParams().entrySet().stream()
@@ -33,8 +33,7 @@ public class GetHttpCaller extends AbstractHttpCaller {
         }
         Request.Builder builder = new Request.Builder().url(url);
         appendHeaders(builder, starxRequest.getHeaders());
-        Request request = builder.get().build();
-        return call(request);
+        return builder.get().build();
     }
 
     /**
