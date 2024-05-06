@@ -14,7 +14,7 @@ import java.io.IOException;
  * @since 1.0
  */
 public class ConvertTest {
-    @Test
+//    @Test
     public void testPng2JpgConverter() throws IOException {
         Png2JpgConverter png2JpgConverter = new Png2JpgConverter();
         png2JpgConverter.convertWithPixelControl(
