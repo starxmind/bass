@@ -1,4 +1,4 @@
-package com.starxmind.bass.datastructure.tree;
+package com.starxmind.bass.datastructure.map;
 
 import java.util.Map;
 import java.util.concurrent.*;
@@ -25,6 +25,10 @@ public class ExpiringMap<K, V> {
 
     public V get(K key) {
         return valueMap.get(key);
+    }
+
+    public boolean containsKey(K key) {
+        return valueMap.containsKey(key);
     }
 
     public V remove(K key) {

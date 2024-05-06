@@ -1,6 +1,6 @@
 package com.starxmind.bass.datastructure.tree.test;
 
-import com.starxmind.bass.datastructure.tree.ExpiringMap;
+import com.starxmind.bass.datastructure.map.ExpiringMap;
 import org.junit.Test;
 
 public class ExpiringMapTest {
