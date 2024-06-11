@@ -1,6 +1,7 @@
 package com.starxmind.bass.json;
 
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.starxmind.bass.json.exceptions.DeserializeException;
@@ -21,6 +22,12 @@ public class StarxJson {
      * core
      */
     private static final ObjectMapper objectMapper = new ObjectMapper();
+
+    // config
+    static {
+        // ignore all unknown properties
+        objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+    }
 
     /**
      * 对象序列化成JSON string

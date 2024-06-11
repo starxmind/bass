@@ -2,6 +2,7 @@ package com.starxmind.bass.json;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 import com.starxmind.bass.json.beans.City;
 import com.starxmind.bass.json.beans.Person;
 import com.starxmind.bass.json.beans.Province;
@@ -92,4 +93,12 @@ public class StarxJsonTest {
         });
         System.out.println(object.getData());
     }
+
+    @Test
+    public void testIgnoreUnknownProperties() {
+        String cityJson = "{\"name\":\"xxx\",\"id\":100,\"desc\":\"abc\"}";
+        City city = StarxJson.deserializeObject(cityJson, City.class);
+        System.out.println(city);
+    }
+
 }
