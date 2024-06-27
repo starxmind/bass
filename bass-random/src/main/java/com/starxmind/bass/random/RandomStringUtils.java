@@ -6,7 +6,7 @@ package com.starxmind.bass.random;
  * @author pizzalord
  * @since 1.0
  */
-public abstract class StringRandomUtils {
+public abstract class RandomStringUtils {
     /**
      * Generates a lowercase string by the input length
      *
@@ -16,13 +16,13 @@ public abstract class StringRandomUtils {
     public static String genLowercase(int length) {
         String val = "";
         for (int i = 0; i < length; i++) {
-            String str = NumberRandomUtils.RANDOM.nextInt(2) % 2 == 0 ? "num" : "char";
+            String str = RandomNumberUtils.RANDOM.nextInt(2) % 2 == 0 ? "num" : "char";
             if ("char".equalsIgnoreCase(str)) {
                 // Generate a letter [65, 97]
-                val += (char) (65 + NumberRandomUtils.RANDOM.nextInt(26));
+                val += (char) (65 + RandomNumberUtils.RANDOM.nextInt(26));
             } else if ("num".equalsIgnoreCase(str)) {
                 // Generate a number
-                val += NumberRandomUtils.RANDOM.nextInt(10);
+                val += RandomNumberUtils.RANDOM.nextInt(10);
             }
         }
         return val;
@@ -47,7 +47,7 @@ public abstract class StringRandomUtils {
     public static String genPureNumbers(int length) {
         String retStr = "";
         for (int i = 0; i < length; i++) {
-            retStr += NumberRandomUtils.RANDOM.nextInt(10);
+            retStr += RandomNumberUtils.RANDOM.nextInt(10);
         }
         return retStr;
     }

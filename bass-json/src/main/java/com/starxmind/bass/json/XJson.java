@@ -17,7 +17,7 @@ import java.util.Map;
  * @author pizzalord
  * @since 1.0
  */
-public class StarxJson {
+public class XJson {
     /**
      * core
      */

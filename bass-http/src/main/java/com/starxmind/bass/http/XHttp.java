@@ -4,8 +4,8 @@ import com.starxmind.bass.http.callers.DeleteHttpCaller;
 import com.starxmind.bass.http.callers.GetHttpCaller;
 import com.starxmind.bass.http.callers.PostHttpCaller;
 import com.starxmind.bass.http.callers.PutHttpCaller;
-import com.starxmind.bass.http.entities.StarxRequest;
-import com.starxmind.bass.json.StarxJson;
+import com.starxmind.bass.http.entities.XRequest;
+import com.starxmind.bass.json.XJson;
 import lombok.Getter;
 import lombok.Setter;
 import okhttp3.ConnectionPool;
@@ -21,7 +21,7 @@ import java.util.concurrent.TimeUnit;
  * @author pizzalord
  * @since 1.0
  */
-public class StarxHttp {
+public class XHttp {
     /**
      * 超时秒数,默认为30
      */
@@ -62,7 +62,7 @@ public class StarxHttp {
     /**
      * Constructor
      */
-    public StarxHttp() {
+    public XHttp() {
         init();
     }
 
@@ -81,7 +81,7 @@ public class StarxHttp {
      * @param maxIdleConnections       最大连接数
      * @param keepAliveDurationSeconds 保持活动持续秒数
      */
-    public StarxHttp(long timeoutSeconds, int maxIdleConnections, long keepAliveDurationSeconds) {
+    public XHttp(long timeoutSeconds, int maxIdleConnections, long keepAliveDurationSeconds) {
         this.timeoutSeconds = timeoutSeconds;
         this.maxIdleConnections = maxIdleConnections;
         this.keepAliveDurationSeconds = keepAliveDurationSeconds;
@@ -116,7 +116,7 @@ public class StarxHttp {
         if (StringUtils.isBlank(json)) {
             return null;
         }
-        return StarxJson.deserializeObject(json, clazz);
+        return XJson.deserializeObject(json, clazz);
     }
 
     // GET START ------------------------------------------------------------------------------------------------------
@@ -133,7 +133,7 @@ public class StarxHttp {
                       Map<String, String> headers,
                       Map<String, String> queryParams) {
         return getHttpCaller.call(
-                StarxRequest.builder()
+                XRequest.builder()
                         .url(url)
                         .headers(headers)
                         .queryParams(queryParams)
@@ -175,7 +175,7 @@ public class StarxHttp {
                               Map<String, String> headers,
                               Map<String, String> queryParams) {
         return getHttpCaller.callForBytes(
-                StarxRequest.builder()
+                XRequest.builder()
                         .url(url)
                         .headers(headers)
                         .queryParams(queryParams)
@@ -189,7 +189,7 @@ public class StarxHttp {
                        Map<String, String> headers,
                        String jsonBody) {
         return postHttpCaller.call(
-                StarxRequest.builder()
+                XRequest.builder()
                         .url(url)
                         .headers(headers)
                         .jsonBody(jsonBody)
@@ -202,7 +202,7 @@ public class StarxHttp {
                        Map<String, String> headers,
                        Map<String, String> formBody) {
         return postHttpCaller.call(
-                StarxRequest.builder()
+                XRequest.builder()
                         .url(url)
                         .headers(headers)
                         .formBody(formBody)
@@ -231,7 +231,7 @@ public class StarxHttp {
                                Map<String, String> headers,
                                String jsonBody) {
         return postHttpCaller.callForBytes(
-                StarxRequest.builder()
+                XRequest.builder()
                         .url(url)
                         .headers(headers)
                         .jsonBody(jsonBody)
@@ -244,7 +244,7 @@ public class StarxHttp {
                                Map<String, String> headers,
                                Map<String, String> formBody) {
         return postHttpCaller.callForBytes(
-                StarxRequest.builder()
+                XRequest.builder()
                         .url(url)
                         .headers(headers)
                         .formBody(formBody)
@@ -259,7 +259,7 @@ public class StarxHttp {
                       Map<String, String> headers,
                       String jsonBody) {
         return putHttpCaller.call(
-                StarxRequest.builder()
+                XRequest.builder()
                         .url(url)
                         .headers(headers)
                         .jsonBody(jsonBody)
@@ -272,7 +272,7 @@ public class StarxHttp {
                       Map<String, String> headers,
                       Map<String, String> formBody) {
         return putHttpCaller.call(
-                StarxRequest.builder()
+                XRequest.builder()
                         .url(url)
                         .headers(headers)
                         .formBody(formBody)
@@ -303,7 +303,7 @@ public class StarxHttp {
                          Map<String, String> headers,
                          String jsonBody) {
         return deleteHttpCaller.call(
-                StarxRequest.builder()
+                XRequest.builder()
                         .url(url)
                         .headers(headers)
                         .jsonBody(jsonBody)
@@ -316,7 +316,7 @@ public class StarxHttp {
                          Map<String, String> headers,
                          Map<String, String> formBody) {
         return deleteHttpCaller.call(
-                StarxRequest.builder()
+                XRequest.builder()
                         .url(url)
                         .headers(headers)
                         .formBody(formBody)

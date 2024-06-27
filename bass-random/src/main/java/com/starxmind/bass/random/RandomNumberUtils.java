@@ -8,7 +8,7 @@ import java.util.Random;
  * @author pizzalord
  * @since 1.0
  */
-public abstract class NumberRandomUtils {
+public abstract class RandomNumberUtils {
     public static final Random RANDOM = new Random();
 
     /**

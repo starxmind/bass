@@ -1,6 +1,6 @@
 package com.starxmind.bass.http.test;
 
-import com.starxmind.bass.http.StarxHttp;
+import com.starxmind.bass.http.XHttp;
 import com.starxmind.bass.http.test.domain.UserListResp;
 import org.junit.Test;
 
@@ -13,8 +13,8 @@ import org.junit.Test;
 public class ReqresTest {
     @Test
     public void testGet() {
-        StarxHttp simpleStarxHttp = new StarxHttp();
-        UserListResp resp = simpleStarxHttp.getForObject("https://reqres.in/api/users?page=1&per_page=5", UserListResp.class);
+        XHttp simpleXHttp = new XHttp();
+        UserListResp resp = simpleXHttp.getForObject("https://reqres.in/api/users?page=1&per_page=5", UserListResp.class);
         System.out.println(resp);
     }
 }

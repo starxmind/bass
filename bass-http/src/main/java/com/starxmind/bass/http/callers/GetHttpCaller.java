@@ -1,6 +1,6 @@
 package com.starxmind.bass.http.callers;
 
-import com.starxmind.bass.http.entities.StarxRequest;
+import com.starxmind.bass.http.entities.XRequest;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import org.apache.commons.collections4.MapUtils;
@@ -20,10 +20,10 @@ public class GetHttpCaller extends AbstractHttpCaller {
     }
 
     @Override
-    protected Request buildRequest(StarxRequest starxRequest) {
-        String url = starxRequest.getUrl();
-        if (MapUtils.isNotEmpty(starxRequest.getQueryParams())) {
-            Map<String, String> params = starxRequest.getQueryParams().entrySet().stream()
+    protected Request buildRequest(XRequest xRequest) {
+        String url = xRequest.getUrl();
+        if (MapUtils.isNotEmpty(xRequest.getQueryParams())) {
+            Map<String, String> params = xRequest.getQueryParams().entrySet().stream()
                     .filter(x -> x.getValue() != null)
                     .collect(Collectors.toMap(
                             x -> x.getKey(),
@@ -32,7 +32,7 @@ public class GetHttpCaller extends AbstractHttpCaller {
             url = appendParamsAfterUrl(url, params);
         }
         Request.Builder builder = new Request.Builder().url(url);
-        appendHeaders(builder, starxRequest.getHeaders());
+        appendHeaders(builder, xRequest.getHeaders());
         return builder.get().build();
     }
 

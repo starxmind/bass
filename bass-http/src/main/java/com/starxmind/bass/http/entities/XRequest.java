@@ -19,7 +19,7 @@ import java.util.Map;
 @NoArgsConstructor
 @Builder(toBuilder = true)
 @Data
-public class StarxRequest {
+public class XRequest {
     private String url;
     private RequestMethod requestMethod;
     private ContentType contentType;

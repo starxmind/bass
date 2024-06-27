@@ -8,7 +8,7 @@ import java.util.UUID;
  * @author pizzalord
  * @since 1.0
  */
-public abstract class UuidRandomUtils {
+public abstract class RandomUuidUtils {
     /**
      * Generate a random UUID
      *

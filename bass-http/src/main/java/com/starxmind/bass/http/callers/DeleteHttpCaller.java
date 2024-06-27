@@ -1,6 +1,6 @@
 package com.starxmind.bass.http.callers;
 
-import com.starxmind.bass.http.entities.StarxRequest;
+import com.starxmind.bass.http.entities.XRequest;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
@@ -17,10 +17,10 @@ public class DeleteHttpCaller extends AbstractHttpCaller {
     }
 
     @Override
-    public Request buildRequest(StarxRequest starxRequest) {
-        RequestBody requestBody = super.getRequestBody(starxRequest);
-        Request.Builder builder = new Request.Builder().url(starxRequest.getUrl());
-        appendHeaders(builder, starxRequest.getHeaders());
+    public Request buildRequest(XRequest xRequest) {
+        RequestBody requestBody = super.getRequestBody(xRequest);
+        Request.Builder builder = new Request.Builder().url(xRequest.getUrl());
+        appendHeaders(builder, xRequest.getHeaders());
         return builder.delete(requestBody).build();
     }
 }
