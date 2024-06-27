@@ -129,7 +129,7 @@ public abstract class DateUtils {
                 .replaceAll("-", "")
                 .replaceAll("/", "");
 
-        String currentDate = DateFormats.FORMAT_YMD_PURE_NUMBERS.format(new Date());
+        String currentDate = DateFormats.YMD_PURE_NUMBERS.format(new Date());
         // 今天的年份
         int year = Integer.parseInt(currentDate.substring(0, 4));
         // 今天的月日
