@@ -8,7 +8,7 @@ import org.apache.commons.lang3.StringUtils;
  * @author pizzalord
  * @since 1.0
  */
-public abstract class SQLUtils {
+public final class SQLUtils {
     /**
      * Get fuzzy words
      * Returns null if origin words is null

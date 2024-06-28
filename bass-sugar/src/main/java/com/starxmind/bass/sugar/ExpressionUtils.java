@@ -16,7 +16,7 @@ import java.util.regex.Pattern;
  * @author pizzalord
  * @since 1.0
  */
-public abstract class ExpressionUtils {
+public final class ExpressionUtils {
     private static final Pattern PATTERN = Pattern.compile("\\$\\{(.+?)\\}");
 
     public static String evaluateExpression(String expression, Map<String, String> variables) {

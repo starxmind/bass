@@ -2,13 +2,15 @@ package com.starxmind.bass.io.core;
 
 import com.starxmind.bass.sugar.Sugar;
 
+import javax.imageio.IIOImage;
 import javax.imageio.ImageIO;
+import javax.imageio.ImageWriteParam;
+import javax.imageio.ImageWriter;
+import javax.imageio.stream.ImageOutputStream;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
+import java.nio.file.Files;
 import java.util.Base64;
 
 /**
@@ -17,7 +19,7 @@ import java.util.Base64;
  * @author pizzalord
  * @since 1.0
  */
-public abstract class ImageUtils {
+public final class ImageUtils {
     /**
      * 将图像读到字节数组
      *
@@ -114,4 +116,71 @@ public abstract class ImageUtils {
             Sugar.closeQuietly(in);
         }
     }
+
+    public static void compressImage(BufferedImage image, File output, String formatName, float quality) throws IOException {
+        // 获取 JPEG ImageWriter
+        ImageWriter jpgWriter = ImageIO.getImageWritersByFormatName(formatName).next();
+
+        // 配置压缩参数
+        ImageWriteParam jpgWriteParam = jpgWriter.getDefaultWriteParam();
+        jpgWriteParam.setCompressionMode(ImageWriteParam.MODE_EXPLICIT);
+        jpgWriteParam.setCompressionQuality(quality);
+
+        // 创建输出流
+        try (ImageOutputStream outputStream = ImageIO.createImageOutputStream(output)) {
+            jpgWriter.setOutput(outputStream);
+
+            // 写入压缩后的图片
+            jpgWriter.write(null, new IIOImage(image, null, null), jpgWriteParam);
+
+            // 关闭写入器
+            jpgWriter.dispose();
+        }
+    }
+
+    public static void resizeAndCompress(String inputPath, String outputPath, String targetFormat, float quality, int targetWidth, int targetHeight) throws IOException {
+        // 创建缩放后的图片，保持宽高比
+        BufferedImage resizedImage = ImageUtils.resizeImageWithAspectRatio(
+                ImageIO.read(new File(inputPath)), targetWidth, targetHeight);
+        // 压缩图片
+        compressImage(resizedImage, new File(outputPath), targetFormat, quality);
+    }
+
+    public static void resize(String inputPath, String outputPath, String targetFormat, int targetWidth, int targetHeight) throws IOException {
+        // 创建缩放后的图片，保持宽高比
+        BufferedImage resizedImage = resizeImageWithAspectRatio(
+                ImageIO.read(new File(inputPath)), targetWidth, targetHeight);
+        File outputFile = new File(outputPath);
+        // 输出目标图片
+        ImageIO.write(resizedImage, targetFormat, Files.newOutputStream(outputFile.toPath()));
+    }
+
+    private static BufferedImage resizeImageWithAspectRatio(BufferedImage originalImage, int targetWidth, int targetHeight) {
+        int originalWidth = originalImage.getWidth();
+        int originalHeight = originalImage.getHeight();
+
+        float aspectRatio = (float) originalWidth / originalHeight;
+
+        if (targetWidth > 0 && targetHeight > 0) {
+            if (targetWidth / (float) targetHeight < aspectRatio) {
+                targetHeight = (int) (targetWidth / aspectRatio);
+            } else {
+                targetWidth = (int) (targetHeight * aspectRatio);
+            }
+        } else if (targetWidth > 0) {
+            targetHeight = (int) (targetWidth / aspectRatio);
+        } else if (targetHeight > 0) {
+            targetWidth = (int) (targetHeight * aspectRatio);
+        } else {
+            throw new IllegalArgumentException("At least one of targetWidth or targetHeight must be greater than 0");
+        }
+
+        Image resultingImage = originalImage.getScaledInstance(targetWidth, targetHeight, Image.SCALE_SMOOTH);
+        BufferedImage outputImage = new BufferedImage(targetWidth, targetHeight, BufferedImage.TYPE_INT_RGB);
+        Graphics2D g2d = outputImage.createGraphics();
+        g2d.drawImage(resultingImage, 0, 0, null);
+        g2d.dispose();
+        return outputImage;
+    }
+
 }

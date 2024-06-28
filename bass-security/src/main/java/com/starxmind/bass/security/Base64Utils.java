@@ -2,15 +2,13 @@ package com.starxmind.bass.security;
 
 import org.apache.commons.codec.binary.Base64;
 
-import java.io.IOException;
-
 /**
  * Base64加密解密
  *
  * @author pizzalord
  * @since 1.0
  */
-public abstract class Base64Utils {
+public final class Base64Utils {
     /***
      * BASE64加密
      * @param origin 原始字符串

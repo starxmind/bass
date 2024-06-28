@@ -15,7 +15,7 @@ import java.util.Map;
  * @author Xpizza
  * @since shire1.0
  */
-public abstract class SQLExecutor {
+public final class SQLExecutor {
     /**
      * execute statement in a datasource
      *

@@ -9,7 +9,7 @@ import com.starxmind.bass.sql.auto.field.Field;
  * @author pizzalord
  * @since 1.0
  */
-public class SQL {
+public final class SQL {
     public static SQLStream stream() {
         return new SQLStream();
     }

@@ -9,8 +9,8 @@ import java.security.*;
  * @author pizzalord
  * @since 1.0
  */
-public class RSAUtils {
-    public static void main(String[] args) throws Exception {
+public final class RSAUtils {
+    public static void genPairKeys() throws Exception {
         // 生成RSA密钥对
         KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance("RSA");
         SecureRandom secureRandom = new SecureRandom();

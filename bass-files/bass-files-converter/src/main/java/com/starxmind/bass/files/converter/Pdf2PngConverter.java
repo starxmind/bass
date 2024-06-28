@@ -1,5 +1,7 @@
 package com.starxmind.bass.files.converter;
 
+import com.starxmind.bass.io.core.FileUtils;
+import com.starxmind.bass.sugar.Sugar;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.rendering.ImageType;
 import org.apache.pdfbox.rendering.PDFRenderer;
@@ -20,29 +22,24 @@ import java.io.OutputStream;
 public class Pdf2PngConverter implements FilesConverter {
     @Override
     public void convert(String srcPath, String destPath) throws IOException {
+        PDDocument document = null;
         try {
-            PDDocument document = PDDocument.load(new File(srcPath));
+            document = PDDocument.load(new File(srcPath));
             PDFRenderer pdfRenderer = new PDFRenderer(document);
 
             // 创建输出文件夹
-            File outputFolder = new File(destPath);
-            outputFolder.mkdirs();
+            FileUtils.createDirectoryIfNotExists(destPath);
 
+            // 每页转出
             for (int page = 0; page < document.getNumberOfPages(); ++page) {
                 BufferedImage image = pdfRenderer.renderImageWithDPI(page, 300, ImageType.RGB);
-
                 // 指定图像文件名
                 String imageFileName = destPath + "/page_" + (page + 1) + ".png";
-
                 // 保存图像
                 ImageIO.write(image, "PNG", new File(imageFileName));
             }
-
-            document.close();
-            System.out.println("PDF转换完成。");
-
-        } catch (IOException e) {
-            e.printStackTrace();
+        } finally {
+            Sugar.closeQuietly(document);
         }
     }
 

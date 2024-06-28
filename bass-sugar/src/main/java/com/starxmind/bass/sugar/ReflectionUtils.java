@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
  * @author pizzalord
  * @since 1.0
  */
-public abstract class ReflectionUtils {
+public final class ReflectionUtils {
     /**
      * Transfer an object to a map
      *

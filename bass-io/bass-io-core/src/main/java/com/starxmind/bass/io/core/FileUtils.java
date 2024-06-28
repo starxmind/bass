@@ -14,7 +14,7 @@ import java.util.regex.Pattern;
  * @author pizzalord
  * @since 1.0
  */
-public abstract class FileUtils {
+public final class FileUtils {
     /**
      * Illegal strings for filename
      */

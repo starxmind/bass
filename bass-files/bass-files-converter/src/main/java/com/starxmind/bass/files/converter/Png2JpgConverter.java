@@ -3,7 +3,11 @@ package com.starxmind.bass.files.converter;
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.nio.file.Files;
 
 /**
  * TODO
@@ -19,7 +23,7 @@ public class Png2JpgConverter implements FilesConverter {
 
     @Override
     public void convert(File scrFile, File destFile) throws IOException {
-        convert(new FileInputStream(scrFile), new FileOutputStream(destFile));
+        convert(Files.newInputStream(scrFile.toPath()), Files.newOutputStream(destFile.toPath()));
     }
 
     @Override
@@ -43,7 +47,7 @@ public class Png2JpgConverter implements FilesConverter {
 
     @Override
     public void convertWithPixelControl(File scrFile, File destFile, int desiredWidth, int desiredHeight, float quality) throws IOException {
-        convertWithPixelControl(new FileInputStream(scrFile), new FileOutputStream(destFile), desiredWidth, desiredHeight, quality);
+        convertWithPixelControl(Files.newInputStream(scrFile.toPath()), Files.newOutputStream(destFile.toPath()), desiredWidth, desiredHeight, quality);
     }
 
     @Override

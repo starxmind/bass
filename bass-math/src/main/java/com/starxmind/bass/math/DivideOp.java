@@ -9,7 +9,7 @@ import java.math.RoundingMode;
  * @author pizzalord
  * @since 1.0
  */
-public class DivideOp {
+public final class DivideOp {
     /**
      * 默认除法运算精度
      */

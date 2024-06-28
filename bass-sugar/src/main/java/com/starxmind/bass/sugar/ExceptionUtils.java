@@ -11,7 +11,7 @@ import java.io.StringWriter;
  * @author pizzalord
  * @since 1.0
  */
-public abstract class ExceptionUtils {
+public final class ExceptionUtils {
     /**
      * Get track for errors
      *

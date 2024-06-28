@@ -10,7 +10,7 @@ import static com.starxmind.bass.sugar.Sugar.closeQuietly;
  * @author pizzalord
  * @since 1.0
  */
-public abstract class IOUtils {
+public final class IOUtils {
     /**
      * 1KB
      */

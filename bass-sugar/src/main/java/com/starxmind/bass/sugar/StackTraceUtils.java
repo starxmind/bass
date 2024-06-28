@@ -6,7 +6,7 @@ package com.starxmind.bass.sugar;
  * @author pizzalord
  * @since 1.0
  */
-public class StackTraceUtils {
+public final class StackTraceUtils {
     /**
      * 获取调用方的类
      *

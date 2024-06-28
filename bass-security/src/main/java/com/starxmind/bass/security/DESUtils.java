@@ -14,7 +14,7 @@ import static com.starxmind.bass.security.SecurityConstants.SECURE_RANDOM;
  * @author pizzalord
  * @since 1.0
  */
-public abstract class DESUtils {
+public final class DESUtils {
     private static final String DES = "DES";
     /**
      * 密钥工厂

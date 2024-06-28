@@ -14,7 +14,7 @@ import java.util.Objects;
  * @author pizzalord
  * @since 1.0
  */
-public abstract class Asserts {
+public final class Asserts {
     /**
      * Assert the expression is true
      *

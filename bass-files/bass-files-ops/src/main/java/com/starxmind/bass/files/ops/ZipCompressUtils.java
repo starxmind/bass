@@ -1,6 +1,7 @@
 package com.starxmind.bass.files.ops;
 
 import com.starxmind.bass.io.core.IOUtils;
+import com.starxmind.bass.sugar.Sugar;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -15,16 +16,22 @@ import java.util.zip.ZipOutputStream;
  * @author pizzalord
  * @since 1.0
  */
-public abstract class ZipCompressUtils {
+public final class ZipCompressUtils {
     public static void compressFile(String sourceFilePath, String compressedFilePath) throws IOException {
-        File sourceFile = new File(sourceFilePath);
-        FileInputStream fis = new FileInputStream(sourceFile);
-        FileOutputStream fos = new FileOutputStream(compressedFilePath);
-        ZipOutputStream zipOut = new ZipOutputStream(fos);
-        zipOut.putNextEntry(new ZipEntry(sourceFile.getName()));
-        IOUtils.copy(fis, zipOut);
-        fis.close();
-        fos.close();
-        zipOut.close();
+        FileInputStream fis = null;
+        FileOutputStream fos = null;
+        ZipOutputStream zipOut = null;
+        try {
+            File sourceFile = new File(sourceFilePath);
+            fis = new FileInputStream(sourceFile);
+            fos = new FileOutputStream(compressedFilePath);
+            zipOut = new ZipOutputStream(fos);
+            zipOut.putNextEntry(new ZipEntry(sourceFile.getName()));
+            IOUtils.copy(fis, zipOut);
+        } finally {
+            Sugar.closeQuietly(fis);
+            Sugar.closeQuietly(fos);
+            Sugar.closeQuietly(zipOut);
+        }
     }
 }

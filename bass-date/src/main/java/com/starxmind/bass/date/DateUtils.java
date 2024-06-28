@@ -12,7 +12,7 @@ import java.util.Date;
  * @author pizzalord
  * @since 1.0
  */
-public abstract class DateUtils {
+public final class DateUtils {
     /**
      * 一秒钟
      */

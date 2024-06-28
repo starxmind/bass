@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
  * @author pizzalord
  * @since 1.0
  */
-public class TreeConverter {
+public final class TreeConverter {
     /**
      * 扁平数组转树形结构
      *

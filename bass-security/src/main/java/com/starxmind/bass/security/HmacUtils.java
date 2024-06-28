@@ -8,7 +8,7 @@ import java.nio.charset.StandardCharsets;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 
-public abstract class HmacUtils {
+public final class HmacUtils {
     public static byte[] encrypt(String origin, String secret) {
         return encrypt(origin, secret, HmacAlgorithms.HMAC_SHA_1);
     }

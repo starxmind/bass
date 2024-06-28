@@ -9,7 +9,7 @@ import java.net.URL;
  * @author pizzalord
  * @since 1.0
  */
-public abstract class ClassLoaderUtils {
+public final class ClassLoaderUtils {
     /**
      * 切换当前线程的ClassLoader
      */

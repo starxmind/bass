@@ -6,7 +6,7 @@ package com.starxmind.bass.sugar;
  * @author Xpizza
  * @since 1.0
  */
-public abstract class Sugar {
+public final class Sugar {
     /**
      * Close resources quietly
      *
@@ -18,7 +18,7 @@ public abstract class Sugar {
         }
         try {
             autoCloseable.close();
-        } catch (Exception e) {
+        } catch (Exception ignored) {
         }
     }
 }

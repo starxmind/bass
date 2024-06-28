@@ -12,7 +12,7 @@ import static com.starxmind.bass.sugar.Sugar.closeQuietly;
  * @author pizzalord
  * @since 1.0
  */
-public abstract class JdbcUtils {
+public final class JdbcUtils {
     /**
      * Get a database connection
      *

@@ -4,6 +4,7 @@ import com.starxmind.bass.http.ContentType;
 import com.starxmind.bass.http.XHttpException;
 import com.starxmind.bass.http.entities.XRequest;
 import com.starxmind.bass.sugar.Asserts;
+import com.starxmind.bass.sugar.Sugar;
 import okhttp3.*;
 import org.apache.commons.collections4.MapUtils;
 import org.jetbrains.annotations.Nullable;
@@ -17,7 +18,7 @@ import java.util.Map;
  * @since 1.0
  */
 public abstract class AbstractHttpCaller {
-    private OkHttpClient okHttpClient;
+    private final OkHttpClient okHttpClient;
 
     public AbstractHttpCaller(OkHttpClient okHttpClient) {
         this.okHttpClient = okHttpClient;
@@ -34,13 +35,17 @@ public abstract class AbstractHttpCaller {
     }
 
     protected byte[] callOkHttp(Request request) {
+        Response response = null;
         try {
-            Response response = okHttpClient.newCall(request).execute();
+            response = okHttpClient.newCall(request).execute();
             Asserts.isTrue(response.isSuccessful(),
                     String.format("Unexpected http code: %d, error message: %s", response.code(), response.message()));
+            assert response.body() != null;
             return response.body().bytes();
         } catch (Exception e) {
             throw new XHttpException(e);
+        } finally {
+            Sugar.closeQuietly(response);
         }
     }
 

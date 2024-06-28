@@ -6,7 +6,7 @@ package com.starxmind.bass.random;
  * @author pizzalord
  * @since 1.0
  */
-public abstract class RandomStringUtils {
+public final class RandomStringUtils {
     /**
      * Generates a lowercase string by the input length
      *
