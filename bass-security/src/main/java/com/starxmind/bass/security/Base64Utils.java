@@ -24,9 +24,8 @@ public abstract class Base64Utils {
      * BASE64解密
      * @param encrypted 已加密的字符串
      * @return 解密后的字符串
-     * @throws IOException IOException
      */
-    public static byte[] decrypt(String encrypted) throws IOException {
+    public static byte[] decrypt(String encrypted) {
         return Base64.decodeBase64(encrypted);
     }
 }
