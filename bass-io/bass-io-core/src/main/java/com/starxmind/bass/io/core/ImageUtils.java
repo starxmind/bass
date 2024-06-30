@@ -139,9 +139,9 @@ public final class ImageUtils {
     }
 
     public static void resizeAndCompress(String inputPath, String outputPath, String targetFormat, float quality, int targetWidth, int targetHeight) throws IOException {
+        BufferedImage bufferedImage = ImageIO.read(new File(inputPath));
         // 创建缩放后的图片，保持宽高比
-        BufferedImage resizedImage = ImageUtils.resizeImageWithAspectRatio(
-                ImageIO.read(new File(inputPath)), targetWidth, targetHeight);
+        BufferedImage resizedImage = resizeImageWithAspectRatio(bufferedImage, targetWidth, targetHeight);
         // 压缩图片
         compressImage(resizedImage, new File(outputPath), targetFormat, quality);
     }
