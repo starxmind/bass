@@ -3,12 +3,14 @@ package com.starxmind.bass.datastructure.tree.test;
 import com.starxmind.bass.datastructure.map.ExpiringMap;
 import org.junit.Test;
 
+import java.util.concurrent.TimeUnit;
+
 public class ExpiringMapTest {
     @Test
     public void test() {
         ExpiringMap<String, Integer> expiringMap = new ExpiringMap<>();
-        expiringMap.put("key1", 100, 5000); // 在5秒后过期
-        expiringMap.put("key2", 200, 10000); // 在10秒后过期
+        expiringMap.put("key1", 100, 5, TimeUnit.SECONDS); // 在5秒后过期
+        expiringMap.put("key2", 200, 10, TimeUnit.SECONDS); // 在10秒后过期
 
         System.out.println(expiringMap.get("key1")); // 输出：100
         System.out.println(expiringMap.get("key2")); // 输出：200

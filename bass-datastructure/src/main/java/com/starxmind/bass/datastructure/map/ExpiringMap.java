@@ -11,14 +11,13 @@ public class ExpiringMap<K, V> {
     public ExpiringMap() {
     }
 
-    public void put(K key, V value, long expireAfterMillis) {
+    public void put(K key, V value, long expireAfter, TimeUnit timeUnit) {
         // 移除之前的任务
         ScheduledFuture<?> existingExpiration = expirationMap.remove(key);
         if (existingExpiration != null) {
             existingExpiration.cancel(false);
         }
-
-        ScheduledFuture<?> expiration = executor.schedule(() -> evict(key), expireAfterMillis, TimeUnit.MILLISECONDS);
+        ScheduledFuture<?> expiration = executor.schedule(() -> evict(key), expireAfter, timeUnit);
         expirationMap.put(key, expiration);
         valueMap.put(key, value);
     }
@@ -47,4 +46,5 @@ public class ExpiringMap<K, V> {
     public void shutdown() {
         executor.shutdown();
     }
+
 }
