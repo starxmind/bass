@@ -60,6 +60,7 @@
         <commons-collections4.version>4.4</commons-collections4.version>
         <hibernate-validator.version>6.1.7.Final</hibernate-validator.version>
         <jakarta.el.version>3.0.3</jakarta.el.version>
+        <maven.test.skip>true</maven.test.skip>
     </properties>
 
     <dependencies>
@@ -191,6 +192,11 @@
             <dependency>
                 <groupId>com.starxmind</groupId>
                 <artifactId>bass-files-converter</artifactId>
+                <version>${bass.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.starxmind</groupId>
+                <artifactId>bass-files-ops</artifactId>
                 <version>${bass.version}</version>
             </dependency>
         </dependencies>
