@@ -40,6 +40,7 @@
         <module>bass-http</module>
         <module>bass-net</module>
         <module>bass-files</module>
+        <module>bass-concurrent</module>
     </modules>
 
     <groupId>com.starxmind</groupId>
@@ -191,6 +192,11 @@
             <dependency>
                 <groupId>com.starxmind</groupId>
                 <artifactId>bass-files-converter</artifactId>
+                <version>${bass.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.starxmind</groupId>
+                <artifactId>bass-concurrent</artifactId>
                 <version>${bass.version}</version>
             </dependency>
         </dependencies>
