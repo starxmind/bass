@@ -4,6 +4,7 @@ import com.starxmind.bass.concurrent.lock.memory.MemoryXLock;
 import com.starxmind.bass.concurrent.lock.memory.MemoryXLockFactory;
 
 import java.time.LocalDateTime;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class LockTask {
@@ -13,15 +14,10 @@ public class LockTask {
 
     public void execute() {
         MemoryXLock memoryXLock = memoryXLockFactory.get(lockKey);
-        memoryXLock.lock();
+        memoryXLock.lock(3000, TimeUnit.SECONDS);
         int after = count.addAndGet(2);
         System.out.printf("%s [%s] after: %s%n", LocalDateTime.now(), Thread.currentThread().getName(), after);
         System.out.println("FuncTest lock status: " + isLocked());
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
         memoryXLock.unlock();
     }
 

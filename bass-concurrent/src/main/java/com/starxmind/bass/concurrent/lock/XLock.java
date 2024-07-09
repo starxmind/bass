@@ -14,4 +14,8 @@ public interface XLock {
     boolean tryLock(long waitTime, TimeUnit timeUnit);
 
     void unlock();
+
+    void lock(long leaseTime, TimeUnit timeUnit);
+
+    boolean tryLock(long waitTime, long leaseTime, TimeUnit timeUnit);
 }
