@@ -5,8 +5,8 @@ import org.junit.Test;
 public class LockTest {
     @Test
     public void test() {
-        FuncTest funcTest = new FuncTest();
-        Runnable task = funcTest::execute;
+        LockTask lockTask = new LockTask();
+        Runnable task = lockTask::execute;
 
         // 创建并启动多个线程
         Thread thread1 = new Thread(task, "T1");
@@ -21,6 +21,6 @@ public class LockTest {
             e.printStackTrace();
         }
 
-        System.out.println("lock status: " + funcTest.isLocked());
+        System.out.println("lock status: " + lockTask.isLocked());
     }
 }

@@ -1,13 +1,17 @@
 package com.starxmind.bass.concurrent;
 
+import java.util.concurrent.TimeUnit;
+
 public interface XLock {
-    boolean isLocked(String lockKey);
+    boolean isLocked();
 
-    boolean isHeldByCurrentThread(String lockKey);
+    boolean isHeldByCurrentThread();
 
-    void lock(String lockKey);
+    void lock();
 
-    boolean tryLock(String lockKey);
+    boolean tryLock();
 
-    void unlock(String lockKey);
+    boolean tryLock(long waitTime, TimeUnit timeUnit);
+
+    void unlock();
 }
