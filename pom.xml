@@ -40,6 +40,7 @@
         <module>bass-http</module>
         <module>bass-net</module>
         <module>bass-files</module>
+        <module>bass-concurrent</module>
     </modules>
 
     <groupId>com.starxmind</groupId>
@@ -53,14 +54,13 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <guava.version>31.1-jre</guava.version>
+        <guava.version>32.0.0-android</guava.version>
         <lombok.version>1.18.26</lombok.version>
         <junit.version>4.13.2</junit.version>
         <commons-lang3.version>3.12.0</commons-lang3.version>
         <commons-collections4.version>4.4</commons-collections4.version>
         <hibernate-validator.version>6.1.7.Final</hibernate-validator.version>
-        <jakarta.el.version>3.0.3</jakarta.el.version>
-        <maven.test.skip>true</maven.test.skip>
+        <jakarta.el.version>4.0.2</jakarta.el.version>
     </properties>
 
     <dependencies>
@@ -196,7 +196,7 @@
             </dependency>
             <dependency>
                 <groupId>com.starxmind</groupId>
-                <artifactId>bass-files-ops</artifactId>
+                <artifactId>bass-concurrent</artifactId>
                 <version>${bass.version}</version>
             </dependency>
         </dependencies>
