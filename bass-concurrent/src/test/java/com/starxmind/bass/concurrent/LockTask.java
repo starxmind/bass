@@ -1,15 +1,18 @@
 package com.starxmind.bass.concurrent;
 
+import com.starxmind.bass.concurrent.lock.memory.MemoryXLock;
+import com.starxmind.bass.concurrent.lock.memory.MemoryXLockFactory;
+
 import java.time.LocalDateTime;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class LockTask {
-    private final MemoryLockFactory memoryLockFactory = new MemoryLockFactory();
+    private final MemoryXLockFactory memoryXLockFactory = new MemoryXLockFactory();
     private final AtomicInteger count = new AtomicInteger(10);
     private final String lockKey = "funcTest";
 
     public void execute() {
-        MemoryXLock memoryXLock = memoryLockFactory.get(lockKey);
+        MemoryXLock memoryXLock = memoryXLockFactory.get(lockKey);
         memoryXLock.lock();
         int after = count.addAndGet(2);
         System.out.printf("%s [%s] after: %s%n", LocalDateTime.now(), Thread.currentThread().getName(), after);
@@ -23,7 +26,7 @@ public class LockTask {
     }
 
     public boolean isLocked() {
-        MemoryXLock memoryXLock = memoryLockFactory.get(lockKey);
+        MemoryXLock memoryXLock = memoryXLockFactory.get(lockKey);
         return memoryXLock.isLocked();
     }
 }

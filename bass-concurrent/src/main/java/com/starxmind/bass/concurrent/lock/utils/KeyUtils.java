@@ -1,4 +1,4 @@
-package com.starxmind.bass.concurrent.utils;
+package com.starxmind.bass.concurrent.lock.utils;
 
 /**
  * Redis key

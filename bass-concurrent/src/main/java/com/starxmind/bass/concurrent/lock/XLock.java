@@ -1,4 +1,4 @@
-package com.starxmind.bass.concurrent;
+package com.starxmind.bass.concurrent.lock;
 
 import java.util.concurrent.TimeUnit;
 

@@ -12,9 +12,5 @@
     <artifactId>bass-concurrent</artifactId>
 
     <dependencies>
-        <dependency>
-            <groupId>com.starxmind</groupId>
-            <artifactId>bass-datastructure</artifactId>
-        </dependency>
     </dependencies>
 </project>

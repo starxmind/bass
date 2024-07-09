@@ -1,4 +1,4 @@
-package com.starxmind.bass.concurrent.exceptions;
+package com.starxmind.bass.concurrent.lock.exceptions;
 
 /**
  * TODO

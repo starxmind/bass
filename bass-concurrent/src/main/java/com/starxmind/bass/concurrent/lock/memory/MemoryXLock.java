@@ -1,6 +1,7 @@
-package com.starxmind.bass.concurrent;
+package com.starxmind.bass.concurrent.lock.memory;
 
-import com.starxmind.bass.concurrent.exceptions.LockException;
+import com.starxmind.bass.concurrent.lock.XLock;
+import com.starxmind.bass.concurrent.lock.exceptions.LockException;
 import lombok.RequiredArgsConstructor;
 
 import java.util.concurrent.TimeUnit;

@@ -1,6 +1,7 @@
-package com.starxmind.bass.concurrent;
+package com.starxmind.bass.concurrent.lock.memory;
 
-import com.starxmind.bass.concurrent.utils.KeyUtils;
+import com.starxmind.bass.concurrent.lock.XLockFactory;
+import com.starxmind.bass.concurrent.lock.utils.KeyUtils;
 
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.locks.ReentrantLock;
@@ -11,10 +12,11 @@ import java.util.concurrent.locks.ReentrantLock;
  * @author pizzalord
  * @since 1.0
  */
-public class MemoryLockFactory {
+public class MemoryXLockFactory implements XLockFactory {
 
     private final ConcurrentHashMap<String, ReentrantLock> lockMap = new ConcurrentHashMap<>();
 
+    @Override
     public MemoryXLock get(String lockName) {
         final String lockKey = KeyUtils.lockKey(lockName);
         ReentrantLock nativeLock = lockMap.computeIfAbsent(lockKey, k -> new ReentrantLock());
