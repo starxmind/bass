@@ -7,7 +7,7 @@ import java.io.IOException;
 
 public class ImageTest {
 
-    @Test
+//    @Test
     public void compressTest2() throws IOException {
         String inputPath = "D:\\outputs\\images\\news.jpg";
         String outputPath = "D:\\outputs\\images\\news_compressed.jpg";
