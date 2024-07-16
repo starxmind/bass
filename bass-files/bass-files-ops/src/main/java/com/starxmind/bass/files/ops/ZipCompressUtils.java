@@ -11,7 +11,7 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
 /**
- * TODO
+ * Zip compress utils
  *
  * @author pizzalord
  * @since 1.0

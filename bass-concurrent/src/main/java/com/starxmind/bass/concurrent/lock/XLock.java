@@ -2,6 +2,12 @@ package com.starxmind.bass.concurrent.lock;
 
 import java.util.concurrent.TimeUnit;
 
+/**
+ * Lock
+ *
+ * @author pizzalord
+ * @since 1.0
+ */
 public interface XLock {
     boolean isLocked();
 

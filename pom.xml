@@ -27,20 +27,20 @@
     </scm>
 
     <modules>
+        <module>bass-concurrent</module>
+        <module>bass-datastructure</module>
         <module>bass-date</module>
-        <module>bass-math</module>
-        <module>bass-random</module>
+        <module>bass-files</module>
+        <module>bass-http</module>
         <module>bass-io</module>
+        <module>bass-json</module>
+        <module>bass-math</module>
+        <module>bass-net</module>
+        <module>bass-random</module>
+        <module>bass-script</module>
         <module>bass-security</module>
         <module>bass-sql</module>
-        <module>bass-datastructure</module>
-        <module>bass-script</module>
         <module>bass-sugar</module>
-        <module>bass-json</module>
-        <module>bass-http</module>
-        <module>bass-net</module>
-        <module>bass-files</module>
-        <module>bass-concurrent</module>
     </modules>
 
     <groupId>com.starxmind</groupId>
@@ -104,6 +104,11 @@
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>com.starxmind</groupId>
+                <artifactId>bass-concurrent</artifactId>
+                <version>${bass.version}</version>
+            </dependency>
             <dependency>
                 <groupId>com.starxmind</groupId>
                 <artifactId>bass-date</artifactId>
@@ -196,7 +201,7 @@
             </dependency>
             <dependency>
                 <groupId>com.starxmind</groupId>
-                <artifactId>bass-concurrent</artifactId>
+                <artifactId>bass-files-ops</artifactId>
                 <version>${bass.version}</version>
             </dependency>
         </dependencies>

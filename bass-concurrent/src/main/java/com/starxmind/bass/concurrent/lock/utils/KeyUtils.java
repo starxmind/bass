@@ -7,12 +7,6 @@ package com.starxmind.bass.concurrent.lock.utils;
  * @since 1.0
  */
 public final class KeyUtils {
-    /**
-     * Lock key
-     *
-     * @param key
-     * @return
-     */
     public static String lockKey(String key) {
         return "lock:" + key;
     }

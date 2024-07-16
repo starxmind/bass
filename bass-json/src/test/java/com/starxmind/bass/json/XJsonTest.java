@@ -61,7 +61,7 @@ public class XJsonTest {
 
     @Test
     public void test5() {
-        Map map = XJson.objectToMap(js);
+        Map<String, Object> map = XJson.objectToMap(js);
         System.out.println(map);
 
         Province province = XJson.mapToObject(map, Province.class);
@@ -70,7 +70,7 @@ public class XJsonTest {
 
     @Test
     public void test6() {
-        List<Map> maps = XJson.objectListToMapList(provinces);
+        List<Map<String, Object>> maps = XJson.objectListToMapList(provinces);
         System.out.println(maps);
 
         List<Province> provinces = XJson.mapListToObjectList(maps, Province.class);
@@ -98,6 +98,13 @@ public class XJsonTest {
         String cityJson = "{\"name\":\"xxx\",\"id\":100,\"desc\":\"abc\"}";
         City city = XJson.deserializeObject(cityJson, City.class);
         System.out.println(city);
+    }
+
+    @Test
+    public void testDeserializeMap() {
+        String cityJson = "{\"name\":\"xxx\",\"id\":100,\"desc\":\"abc\"}";
+        Map<String, Object> map = XJson.deserializeMap(cityJson.getBytes());
+        System.out.println(map);
     }
 
 }

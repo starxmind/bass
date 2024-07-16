@@ -99,6 +99,16 @@ public class XJson {
         }
     }
 
+    public static Map<String, Object> deserializeMap(String json) {
+        return deserializeObject(json, new TypeReference<Map<String, Object>>() {
+        });
+    }
+
+    public static Map<String, Object> deserializeMap(byte[] bytes) {
+        return deserializeObject(bytes, new TypeReference<Map<String, Object>>() {
+        });
+    }
+
     /**
      * JSON反序列化成Object对象
      *
@@ -126,6 +136,14 @@ public class XJson {
         }
     }
 
+    public static List<Map<String, Object>> deserializeMapList(String json) {
+        try {
+            return objectMapper.readValue(json, getCollectionType(List.class, Map.class));
+        } catch (Exception e) {
+            throw new DeserializeException("Fatal: failed to convert the json to an object...", e);
+        }
+    }
+
     /**
      * 获取带泛型的集合类型
      *
@@ -138,23 +156,24 @@ public class XJson {
         return objectMapper.getTypeFactory().constructParametricType(collectionClass, elementClasses);
     }
 
-    public static Map objectToMap(Object o) {
-        String json = serializeAsString(o);
-        return deserializeObject(json, Map.class);
-    }
-
-    public static <T> T mapToObject(Map map, Class<T> clazz) {
+    public static <T> T mapToObject(Map<String, Object> map, Class<T> clazz) {
         String json = serializeAsString(map);
         return deserializeObject(json, clazz);
     }
 
-    public static <T> List<T> mapListToObjectList(List<Map> mapList, Class<T> clazz) {
+    public static <T> List<T> mapListToObjectList(List<Map<String, Object>> mapList, Class<T> clazz) {
         String json = serializeAsString(mapList);
         return deserializeList(json, clazz);
     }
 
-    public static <T> List<Map> objectListToMapList(List<T> objectList) {
-        String json = serializeAsString(objectList);
-        return deserializeList(json, Map.class);
+    public static Map<String, Object> objectToMap(Object o) {
+        String json = serializeAsString(o);
+        return deserializeMap(json);
     }
+
+    public static <T> List<Map<String, Object>> objectListToMapList(List<T> objectList) {
+        String json = serializeAsString(objectList);
+        return deserializeMapList(json);
+    }
+
 }

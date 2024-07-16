@@ -11,10 +11,4 @@
 
     <artifactId>bass-files-ops</artifactId>
 
-    <dependencies>
-        <dependency>
-            <groupId>com.starxmind</groupId>
-            <artifactId>bass-io-core</artifactId>
-        </dependency>
-    </dependencies>
 </project>

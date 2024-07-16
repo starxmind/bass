@@ -1,7 +1,7 @@
 package com.starxmind.bass.concurrent.lock.exceptions;
 
 /**
- * TODO
+ * Lock exception
  *
  * @author pizzalord
  * @since 1.0

@@ -11,6 +11,4 @@
 
     <artifactId>bass-concurrent</artifactId>
 
-    <dependencies>
-    </dependencies>
 </project>

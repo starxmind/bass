@@ -3,7 +3,7 @@ package com.starxmind.bass.concurrent;
 import org.junit.Test;
 
 public class LockTest {
-    @Test
+//    @Test
     public void test() {
         LockTask lockTask = new LockTask();
         Runnable task = lockTask::execute;

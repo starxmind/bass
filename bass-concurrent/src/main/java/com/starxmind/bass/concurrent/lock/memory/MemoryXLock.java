@@ -9,6 +9,11 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.ReentrantLock;
 
+/**
+ * Memory lock
+ * @author pizzalord
+ * @since 1.o
+ */
 @RequiredArgsConstructor
 public class MemoryXLock implements XLock {
 
